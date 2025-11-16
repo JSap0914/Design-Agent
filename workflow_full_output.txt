@@ -1,0 +1,310 @@
+================================================================================
+Design Agent - LangGraph Workflow Test
+================================================================================
+
+Step 1: Initializing database...
+2025-11-14 19:44:45 [info     ] Initializing async database engine database_url=postgresql+asyncpg://user:password@localhost:5432/anyon_db
+2025-11-14 19:44:45 [info     ] Async database engine initialized successfully
+   [OK] Database initialized
+
+Step 2: Loading sample PRD and TRD...
+   [OK] PRD: 2193 characters
+   [OK] TRD: 3486 characters
+
+Step 3: Creating design job...
+   [OK] Job created: 0f7919cf-5385-45cf-933c-f889737a4f6f
+
+Step 4: Creating initial workflow state...
+   [OK] Initial state created
+
+Step 5: Creating LangGraph workflow...
+2025-11-14 19:44:45 [info     ] Creating Design Agent workflow
+2025-11-14 19:44:45 [info     ] Workflow graph created (Week 6: Complete Phases 1-6 with ANYON integration)
+   [OK] Workflow created with nodes:
+      - extract_screens (Phase 1)
+      - generate_options (Phase 2)
+      - create_ascii_ui (Phase 3)
+      - refine_design (Phase 3 loop)
+      - generate_design_system (Phase 4)
+      - pause_for_google_ai (Phase 5)
+      - [... and more]
+
+Step 6: Compiling workflow with PostgreSQL checkpointer...
+   [OK] Workflow compiled successfully
+
+Step 7: Running workflow (Phases 1-4)...
+
+   [Phase 1] Screen Extraction...
+2025-11-14 19:44:45 [info     ] Phase 1: Starting screen extraction job_id=0f7919cf-5385-45cf-933c-f889737a4f6f
+2025-11-14 19:44:45 [info     ] Calling LLM for screen extraction
+2025-11-14 19:44:45 [info     ] Calling Claude Sonnet 4.5      max_tokens=4096 model=claude-3-5-haiku-20241022 temperature=0.3
+2025-11-14 19:44:51 [info     ] Claude response received       input_tokens=1782 output_tokens=244 response_length=1015
+2025-11-14 19:44:51 [info     ] Screen extraction completed    rationale="The screens were extracted by comprehensively analyzing the PRD and TRD, covering all mentioned user flows and features. Key considerations included: 1. Authentication flows (Login, Sign Up) 2. Core task management features (Dashboard, Task List, Task Detail, Add/Edit Task) 3. Organizational features (Categories Screen) 4. User profile and settings management 5. Additional utility screens like Search and Onboarding to support a complete user experience The screens provide full coverage of the app's core functionality while maintaining a clean, intuitive navigation structure. The list balances the specific requirements mentioned in the PRD with typical mobile app best practices." screen_count=12 screens=['Login Screen', 'Sign Up Screen', 'Dashboard Screen', 'Task List Screen', 'Task Detail Screen', 'Add Task Screen', 'Edit Task Screen', 'Categories Screen', 'Profile Screen', 'Settings Screen', 'Search Tasks Screen', 'Onboarding Screen']
+2025-11-14 19:44:51 [info     ] Progress updated               job_id=0f7919cf-5385-45cf-933c-f889737a4f6f phase=1 phase_name='Screen Extraction Complete' progress=15.0
+   [OK] Extracted 12 screens:
+        1. Login Screen
+        2. Sign Up Screen
+        3. Dashboard Screen
+        4. Task List Screen
+        5. Task Detail Screen
+        6. Add Task Screen
+        7. Edit Task Screen
+        8. Categories Screen
+        9. Profile Screen
+        10. Settings Screen
+        11. Search Tasks Screen
+        12. Onboarding Screen
+
+2025-11-14 19:44:51 [info     ] Phase 2: Starting layout options generation job_id=0f7919cf-5385-45cf-933c-f889737a4f6f
+2025-11-14 19:44:51 [info     ] Generating options for screen 1/12 screen_name='Login Screen'
+2025-11-14 19:44:51 [info     ] Calling Claude Sonnet 4.5      max_tokens=4096 model=claude-3-5-haiku-20241022 temperature=0.7
+2025-11-14 19:45:01 [info     ] Claude response received       input_tokens=938 output_tokens=573 response_length=2305
+2025-11-14 19:45:01 [info     ] Generated 3 options for screen options_count=3 screen_name='Login Screen'
+2025-11-14 19:45:01 [info     ] Generating options for screen 2/12 screen_name='Sign Up Screen'
+2025-11-14 19:45:01 [info     ] Calling Claude Sonnet 4.5      max_tokens=4096 model=claude-3-5-haiku-20241022 temperature=0.7
+2025-11-14 19:45:12 [info     ] Claude response received       input_tokens=939 output_tokens=628 response_length=2531
+2025-11-14 19:45:12 [info     ] Generated 3 options for screen options_count=3 screen_name='Sign Up Screen'
+2025-11-14 19:45:12 [info     ] Generating options for screen 3/12 screen_name='Dashboard Screen'
+2025-11-14 19:45:12 [info     ] Calling Claude Sonnet 4.5      max_tokens=4096 model=claude-3-5-haiku-20241022 temperature=0.7
+2025-11-14 19:45:28 [info     ] Claude response received       input_tokens=938 output_tokens=899 response_length=3803
+2025-11-14 19:45:28 [info     ] Generated 3 options for screen options_count=3 screen_name='Dashboard Screen'
+2025-11-14 19:45:28 [info     ] Generating options for screen 4/12 screen_name='Task List Screen'
+2025-11-14 19:45:28 [info     ] Calling Claude Sonnet 4.5      max_tokens=4096 model=claude-3-5-haiku-20241022 temperature=0.7
+2025-11-14 19:45:46 [info     ] Claude response received       input_tokens=939 output_tokens=966 response_length=4008
+2025-11-14 19:45:46 [info     ] Generated 3 options for screen options_count=3 screen_name='Task List Screen'
+2025-11-14 19:45:46 [info     ] Generating options for screen 5/12 screen_name='Task Detail Screen'
+2025-11-14 19:45:46 [info     ] Calling Claude Sonnet 4.5      max_tokens=4096 model=claude-3-5-haiku-20241022 temperature=0.7
+2025-11-14 19:45:57 [info     ] Claude response received       input_tokens=939 output_tokens=657 response_length=2744
+2025-11-14 19:45:57 [info     ] Generated 3 options for screen options_count=3 screen_name='Task Detail Screen'
+2025-11-14 19:45:57 [info     ] Generating options for screen 6/12 screen_name='Add Task Screen'
+2025-11-14 19:45:57 [info     ] Calling Claude Sonnet 4.5      max_tokens=4096 model=claude-3-5-haiku-20241022 temperature=0.7
+2025-11-14 19:46:12 [info     ] Claude response received       input_tokens=939 output_tokens=799 response_length=3233
+2025-11-14 19:46:12 [info     ] Generated 3 options for screen options_count=3 screen_name='Add Task Screen'
+2025-11-14 19:46:12 [info     ] Generating options for screen 7/12 screen_name='Edit Task Screen'
+2025-11-14 19:46:12 [info     ] Calling Claude Sonnet 4.5      max_tokens=4096 model=claude-3-5-haiku-20241022 temperature=0.7
+2025-11-14 19:46:28 [info     ] Claude response received       input_tokens=939 output_tokens=870 response_length=3504
+2025-11-14 19:46:28 [info     ] Generated 3 options for screen options_count=3 screen_name='Edit Task Screen'
+2025-11-14 19:46:28 [info     ] Generating options for screen 8/12 screen_name='Categories Screen'
+2025-11-14 19:46:28 [info     ] Calling Claude Sonnet 4.5      max_tokens=4096 model=claude-3-5-haiku-20241022 temperature=0.7
+2025-11-14 19:46:42 [info     ] Claude response received       input_tokens=938 output_tokens=811 response_length=3217
+2025-11-14 19:46:42 [info     ] Generated 3 options for screen options_count=3 screen_name='Categories Screen'
+2025-11-14 19:46:42 [info     ] Generating options for screen 9/12 screen_name='Profile Screen'
+2025-11-14 19:46:42 [info     ] Calling Claude Sonnet 4.5      max_tokens=4096 model=claude-3-5-haiku-20241022 temperature=0.7
+2025-11-14 19:46:53 [info     ] Claude response received       input_tokens=938 output_tokens=582 response_length=2801
+2025-11-14 19:46:53 [info     ] Generated 3 options for screen options_count=3 screen_name='Profile Screen'
+2025-11-14 19:46:53 [info     ] Generating options for screen 10/12 screen_name='Settings Screen'
+2025-11-14 19:46:53 [info     ] Calling Claude Sonnet 4.5      max_tokens=4096 model=claude-3-5-haiku-20241022 temperature=0.7
+2025-11-14 19:47:07 [info     ] Claude response received       input_tokens=938 output_tokens=822 response_length=3339
+2025-11-14 19:47:07 [info     ] Generated 3 options for screen options_count=3 screen_name='Settings Screen'
+2025-11-14 19:47:07 [info     ] Generating options for screen 11/12 screen_name='Search Tasks Screen'
+2025-11-14 19:47:07 [info     ] Calling Claude Sonnet 4.5      max_tokens=4096 model=claude-3-5-haiku-20241022 temperature=0.7
+2025-11-14 19:47:24 [info     ] Claude response received       input_tokens=939 output_tokens=900 response_length=3775
+2025-11-14 19:47:24 [info     ] Generated 3 options for screen options_count=3 screen_name='Search Tasks Screen'
+2025-11-14 19:47:24 [info     ] Generating options for screen 12/12 screen_name='Onboarding Screen'
+2025-11-14 19:47:24 [info     ] Calling Claude Sonnet 4.5      max_tokens=4096 model=claude-3-5-haiku-20241022 temperature=0.7
+2025-11-14 19:47:38 [info     ] Claude response received       input_tokens=941 output_tokens=771 response_length=3027
+2025-11-14 19:47:38 [info     ] Generated 3 options for screen options_count=3 screen_name='Onboarding Screen'
+2025-11-14 19:47:38 [info     ] Layout options generation completed total_options=36 total_screens=12
+2025-11-14 19:47:38 [info     ] Progress updated               job_id=0f7919cf-5385-45cf-933c-f889737a4f6f phase=2 phase_name='Layout Options Generated' progress=35.0
+   [Phase 2] Design Options Generation...
+   [OK] Generated options for 12 screens
+        - Login Screen: 3 layout options
+        - Sign Up Screen: 3 layout options
+
+2025-11-14 19:47:38 [info     ] Phase 3: Starting ASCII UI creation job_id=0f7919cf-5385-45cf-933c-f889737a4f6f
+2025-11-14 19:47:38 [info     ] Creating ASCII UI for screen 1/12 screen_name='Login Screen'
+2025-11-14 19:47:38 [info     ] Calling Claude Sonnet 4.5      max_tokens=4096 model=claude-3-5-haiku-20241022 temperature=0.5
+2025-11-14 19:47:43 [info     ] Claude response received       input_tokens=436 output_tokens=274 response_length=1206
+2025-11-14 19:47:43 [info     ] ASCII UI generator initialized for mobile (40 chars wide)
+2025-11-14 19:47:43 [error    ] Error in ASCII UI creation     error="'cp949' codec can't encode character '\\U0001f510' in position 400: illegal multibyte sequence" job_id=0f7919cf-5385-45cf-933c-f889737a4f6f
+2025-11-14 19:47:43 [info     ] Progress updated               job_id=0f7919cf-5385-45cf-933c-f889737a4f6f phase=2 phase_name='Layout Options Generated' progress=35.0
+   [Phase 3] ASCII UI Creation...
+   [OK] Created ASCII UIs for 0 screens
+
+2025-11-14 19:47:43 [info     ] Phase 3: Processing design refinement job_id=0f7919cf-5385-45cf-933c-f889737a4f6f
+2025-11-14 19:47:43 [info     ] Refining screen 1/12           has_feedback=False screen_name='Login Screen'
+2025-11-14 19:47:43 [info     ] No feedback for Login Screen, marking for user review
+2025-11-14 19:47:43 [info     ] Progress updated               job_id=0f7919cf-5385-45cf-933c-f889737a4f6f phase=2 phase_name='Review Login Screen' progress=35.0
+2025-11-14 19:47:43 [info     ] Continue refinement: screen 1/12 awaiting_feedback=True
+   [Phase 3] Design Refinement...
+   [OK] Refined and approved 0 screens
+
+2025-11-14 19:47:43 [info     ] Phase 3: Processing design refinement job_id=0f7919cf-5385-45cf-933c-f889737a4f6f
+2025-11-14 19:47:43 [info     ] Refining screen 1/12           has_feedback=False screen_name='Login Screen'
+2025-11-14 19:47:43 [info     ] No feedback for Login Screen, marking for user review
+2025-11-14 19:47:43 [info     ] Progress updated               job_id=0f7919cf-5385-45cf-933c-f889737a4f6f phase=2 phase_name='Review Login Screen' progress=35.0
+2025-11-14 19:47:43 [info     ] Continue refinement: screen 1/12 awaiting_feedback=True
+   [Phase 3] Design Refinement...
+   [OK] Refined and approved 0 screens
+
+2025-11-14 19:47:43 [info     ] Phase 3: Processing design refinement job_id=0f7919cf-5385-45cf-933c-f889737a4f6f
+2025-11-14 19:47:43 [info     ] Refining screen 1/12           has_feedback=False screen_name='Login Screen'
+2025-11-14 19:47:43 [info     ] No feedback for Login Screen, marking for user review
+2025-11-14 19:47:43 [info     ] Progress updated               job_id=0f7919cf-5385-45cf-933c-f889737a4f6f phase=2 phase_name='Review Login Screen' progress=35.0
+2025-11-14 19:47:43 [info     ] Continue refinement: screen 1/12 awaiting_feedback=True
+   [Phase 3] Design Refinement...
+   [OK] Refined and approved 0 screens
+
+2025-11-14 19:47:43 [info     ] Phase 3: Processing design refinement job_id=0f7919cf-5385-45cf-933c-f889737a4f6f
+2025-11-14 19:47:43 [info     ] Refining screen 1/12           has_feedback=False screen_name='Login Screen'
+2025-11-14 19:47:43 [info     ] No feedback for Login Screen, marking for user review
+2025-11-14 19:47:43 [info     ] Progress updated               job_id=0f7919cf-5385-45cf-933c-f889737a4f6f phase=2 phase_name='Review Login Screen' progress=35.0
+2025-11-14 19:47:43 [info     ] Continue refinement: screen 1/12 awaiting_feedback=True
+   [Phase 3] Design Refinement...
+   [OK] Refined and approved 0 screens
+
+2025-11-14 19:47:43 [info     ] Phase 3: Processing design refinement job_id=0f7919cf-5385-45cf-933c-f889737a4f6f
+2025-11-14 19:47:43 [info     ] Refining screen 1/12           has_feedback=False screen_name='Login Screen'
+2025-11-14 19:47:43 [info     ] No feedback for Login Screen, marking for user review
+2025-11-14 19:47:43 [info     ] Progress updated               job_id=0f7919cf-5385-45cf-933c-f889737a4f6f phase=2 phase_name='Review Login Screen' progress=35.0
+2025-11-14 19:47:43 [info     ] Continue refinement: screen 1/12 awaiting_feedback=True
+   [Phase 3] Design Refinement...
+   [OK] Refined and approved 0 screens
+
+2025-11-14 19:47:43 [info     ] Phase 3: Processing design refinement job_id=0f7919cf-5385-45cf-933c-f889737a4f6f
+2025-11-14 19:47:43 [info     ] Refining screen 1/12           has_feedback=False screen_name='Login Screen'
+2025-11-14 19:47:43 [info     ] No feedback for Login Screen, marking for user review
+2025-11-14 19:47:43 [info     ] Progress updated               job_id=0f7919cf-5385-45cf-933c-f889737a4f6f phase=2 phase_name='Review Login Screen' progress=35.0
+2025-11-14 19:47:43 [info     ] Continue refinement: screen 1/12 awaiting_feedback=True
+   [Phase 3] Design Refinement...
+   [OK] Refined and approved 0 screens
+
+2025-11-14 19:47:43 [info     ] Phase 3: Processing design refinement job_id=0f7919cf-5385-45cf-933c-f889737a4f6f
+2025-11-14 19:47:43 [info     ] Refining screen 1/12           has_feedback=False screen_name='Login Screen'
+2025-11-14 19:47:43 [info     ] No feedback for Login Screen, marking for user review
+2025-11-14 19:47:43 [info     ] Progress updated               job_id=0f7919cf-5385-45cf-933c-f889737a4f6f phase=2 phase_name='Review Login Screen' progress=35.0
+2025-11-14 19:47:43 [info     ] Continue refinement: screen 1/12 awaiting_feedback=True
+   [Phase 3] Design Refinement...
+   [OK] Refined and approved 0 screens
+
+2025-11-14 19:47:43 [info     ] Phase 3: Processing design refinement job_id=0f7919cf-5385-45cf-933c-f889737a4f6f
+2025-11-14 19:47:43 [info     ] Refining screen 1/12           has_feedback=False screen_name='Login Screen'
+2025-11-14 19:47:43 [info     ] No feedback for Login Screen, marking for user review
+2025-11-14 19:47:43 [info     ] Progress updated               job_id=0f7919cf-5385-45cf-933c-f889737a4f6f phase=2 phase_name='Review Login Screen' progress=35.0
+2025-11-14 19:47:43 [info     ] Continue refinement: screen 1/12 awaiting_feedback=True
+   [Phase 3] Design Refinement...
+   [OK] Refined and approved 0 screens
+
+2025-11-14 19:47:43 [info     ] Phase 3: Processing design refinement job_id=0f7919cf-5385-45cf-933c-f889737a4f6f
+2025-11-14 19:47:43 [info     ] Refining screen 1/12           has_feedback=False screen_name='Login Screen'
+2025-11-14 19:47:43 [info     ] No feedback for Login Screen, marking for user review
+2025-11-14 19:47:43 [info     ] Progress updated               job_id=0f7919cf-5385-45cf-933c-f889737a4f6f phase=2 phase_name='Review Login Screen' progress=35.0
+2025-11-14 19:47:43 [info     ] Continue refinement: screen 1/12 awaiting_feedback=True
+   [Phase 3] Design Refinement...
+   [OK] Refined and approved 0 screens
+
+2025-11-14 19:47:43 [info     ] Phase 3: Processing design refinement job_id=0f7919cf-5385-45cf-933c-f889737a4f6f
+2025-11-14 19:47:43 [info     ] Refining screen 1/12           has_feedback=False screen_name='Login Screen'
+2025-11-14 19:47:43 [info     ] No feedback for Login Screen, marking for user review
+2025-11-14 19:47:43 [info     ] Progress updated               job_id=0f7919cf-5385-45cf-933c-f889737a4f6f phase=2 phase_name='Review Login Screen' progress=35.0
+2025-11-14 19:47:43 [info     ] Continue refinement: screen 1/12 awaiting_feedback=True
+   [Phase 3] Design Refinement...
+   [OK] Refined and approved 0 screens
+
+2025-11-14 19:47:43 [info     ] Phase 3: Processing design refinement job_id=0f7919cf-5385-45cf-933c-f889737a4f6f
+2025-11-14 19:47:43 [info     ] Refining screen 1/12           has_feedback=False screen_name='Login Screen'
+2025-11-14 19:47:43 [info     ] No feedback for Login Screen, marking for user review
+2025-11-14 19:47:43 [info     ] Progress updated               job_id=0f7919cf-5385-45cf-933c-f889737a4f6f phase=2 phase_name='Review Login Screen' progress=35.0
+2025-11-14 19:47:43 [info     ] Continue refinement: screen 1/12 awaiting_feedback=True
+   [Phase 3] Design Refinement...
+   [OK] Refined and approved 0 screens
+
+2025-11-14 19:47:43 [info     ] Phase 3: Processing design refinement job_id=0f7919cf-5385-45cf-933c-f889737a4f6f
+2025-11-14 19:47:43 [info     ] Refining screen 1/12           has_feedback=False screen_name='Login Screen'
+2025-11-14 19:47:43 [info     ] No feedback for Login Screen, marking for user review
+2025-11-14 19:47:43 [info     ] Progress updated               job_id=0f7919cf-5385-45cf-933c-f889737a4f6f phase=2 phase_name='Review Login Screen' progress=35.0
+2025-11-14 19:47:43 [info     ] Continue refinement: screen 1/12 awaiting_feedback=True
+   [Phase 3] Design Refinement...
+   [OK] Refined and approved 0 screens
+
+2025-11-14 19:47:43 [info     ] Phase 3: Processing design refinement job_id=0f7919cf-5385-45cf-933c-f889737a4f6f
+2025-11-14 19:47:43 [info     ] Refining screen 1/12           has_feedback=False screen_name='Login Screen'
+2025-11-14 19:47:43 [info     ] No feedback for Login Screen, marking for user review
+2025-11-14 19:47:43 [info     ] Progress updated               job_id=0f7919cf-5385-45cf-933c-f889737a4f6f phase=2 phase_name='Review Login Screen' progress=35.0
+2025-11-14 19:47:43 [info     ] Continue refinement: screen 1/12 awaiting_feedback=True
+   [Phase 3] Design Refinement...
+   [OK] Refined and approved 0 screens
+
+2025-11-14 19:47:43 [info     ] Phase 3: Processing design refinement job_id=0f7919cf-5385-45cf-933c-f889737a4f6f
+2025-11-14 19:47:43 [info     ] Refining screen 1/12           has_feedback=False screen_name='Login Screen'
+2025-11-14 19:47:43 [info     ] No feedback for Login Screen, marking for user review
+2025-11-14 19:47:43 [info     ] Progress updated               job_id=0f7919cf-5385-45cf-933c-f889737a4f6f phase=2 phase_name='Review Login Screen' progress=35.0
+2025-11-14 19:47:43 [info     ] Continue refinement: screen 1/12 awaiting_feedback=True
+   [Phase 3] Design Refinement...
+   [OK] Refined and approved 0 screens
+
+2025-11-14 19:47:43 [info     ] Phase 3: Processing design refinement job_id=0f7919cf-5385-45cf-933c-f889737a4f6f
+2025-11-14 19:47:43 [info     ] Refining screen 1/12           has_feedback=False screen_name='Login Screen'
+2025-11-14 19:47:43 [info     ] No feedback for Login Screen, marking for user review
+2025-11-14 19:47:43 [info     ] Progress updated               job_id=0f7919cf-5385-45cf-933c-f889737a4f6f phase=2 phase_name='Review Login Screen' progress=35.0
+2025-11-14 19:47:43 [info     ] Continue refinement: screen 1/12 awaiting_feedback=True
+   [Phase 3] Design Refinement...
+   [OK] Refined and approved 0 screens
+
+2025-11-14 19:47:43 [info     ] Phase 3: Processing design refinement job_id=0f7919cf-5385-45cf-933c-f889737a4f6f
+2025-11-14 19:47:43 [info     ] Refining screen 1/12           has_feedback=False screen_name='Login Screen'
+2025-11-14 19:47:43 [info     ] No feedback for Login Screen, marking for user review
+2025-11-14 19:47:43 [info     ] Progress updated               job_id=0f7919cf-5385-45cf-933c-f889737a4f6f phase=2 phase_name='Review Login Screen' progress=35.0
+2025-11-14 19:47:43 [info     ] Continue refinement: screen 1/12 awaiting_feedback=True
+   [Phase 3] Design Refinement...
+   [OK] Refined and approved 0 screens
+
+2025-11-14 19:47:43 [info     ] Phase 3: Processing design refinement job_id=0f7919cf-5385-45cf-933c-f889737a4f6f
+2025-11-14 19:47:43 [info     ] Refining screen 1/12           has_feedback=False screen_name='Login Screen'
+2025-11-14 19:47:43 [info     ] No feedback for Login Screen, marking for user review
+2025-11-14 19:47:43 [info     ] Progress updated               job_id=0f7919cf-5385-45cf-933c-f889737a4f6f phase=2 phase_name='Review Login Screen' progress=35.0
+2025-11-14 19:47:43 [info     ] Continue refinement: screen 1/12 awaiting_feedback=True
+   [Phase 3] Design Refinement...
+   [OK] Refined and approved 0 screens
+
+2025-11-14 19:47:43 [info     ] Phase 3: Processing design refinement job_id=0f7919cf-5385-45cf-933c-f889737a4f6f
+2025-11-14 19:47:43 [info     ] Refining screen 1/12           has_feedback=False screen_name='Login Screen'
+2025-11-14 19:47:43 [info     ] No feedback for Login Screen, marking for user review
+2025-11-14 19:47:43 [info     ] Progress updated               job_id=0f7919cf-5385-45cf-933c-f889737a4f6f phase=2 phase_name='Review Login Screen' progress=35.0
+2025-11-14 19:47:43 [info     ] Continue refinement: screen 1/12 awaiting_feedback=True
+   [Phase 3] Design Refinement...
+   [OK] Refined and approved 0 screens
+
+2025-11-14 19:47:43 [info     ] Phase 3: Processing design refinement job_id=0f7919cf-5385-45cf-933c-f889737a4f6f
+2025-11-14 19:47:43 [info     ] Refining screen 1/12           has_feedback=False screen_name='Login Screen'
+2025-11-14 19:47:43 [info     ] No feedback for Login Screen, marking for user review
+2025-11-14 19:47:43 [info     ] Progress updated               job_id=0f7919cf-5385-45cf-933c-f889737a4f6f phase=2 phase_name='Review Login Screen' progress=35.0
+2025-11-14 19:47:43 [info     ] Continue refinement: screen 1/12 awaiting_feedback=True
+   [Phase 3] Design Refinement...
+   [OK] Refined and approved 0 screens
+
+2025-11-14 19:47:43 [info     ] Phase 3: Processing design refinement job_id=0f7919cf-5385-45cf-933c-f889737a4f6f
+2025-11-14 19:47:43 [info     ] Refining screen 1/12           has_feedback=False screen_name='Login Screen'
+2025-11-14 19:47:43 [info     ] No feedback for Login Screen, marking for user review
+2025-11-14 19:47:43 [info     ] Progress updated               job_id=0f7919cf-5385-45cf-933c-f889737a4f6f phase=2 phase_name='Review Login Screen' progress=35.0
+2025-11-14 19:47:43 [info     ] Continue refinement: screen 1/12 awaiting_feedback=True
+   [Phase 3] Design Refinement...
+   [OK] Refined and approved 0 screens
+
+2025-11-14 19:47:43 [info     ] Phase 3: Processing design refinement job_id=0f7919cf-5385-45cf-933c-f889737a4f6f
+2025-11-14 19:47:43 [info     ] Refining screen 1/12           has_feedback=False screen_name='Login Screen'
+2025-11-14 19:47:43 [info     ] No feedback for Login Screen, marking for user review
+2025-11-14 19:47:43 [info     ] Progress updated               job_id=0f7919cf-5385-45cf-933c-f889737a4f6f phase=2 phase_name='Review Login Screen' progress=35.0
+2025-11-14 19:47:43 [info     ] Continue refinement: screen 1/12 awaiting_feedback=True
+   [Phase 3] Design Refinement...
+   [OK] Refined and approved 0 screens
+
+2025-11-14 19:47:43 [info     ] Phase 3: Processing design refinement job_id=0f7919cf-5385-45cf-933c-f889737a4f6f
+2025-11-14 19:47:43 [info     ] Refining screen 1/12           has_feedback=False screen_name='Login Screen'
+2025-11-14 19:47:43 [info     ] No feedback for Login Screen, marking for user review
+2025-11-14 19:47:43 [info     ] Progress updated               job_id=0f7919cf-5385-45cf-933c-f889737a4f6f phase=2 phase_name='Review Login Screen' progress=35.0
+2025-11-14 19:47:43 [info     ] Continue refinement: screen 1/12 awaiting_feedback=True
+Traceback (most recent call last):
+  File "C:\Users\Han\Documents\SKKU 1st Grade\Design Agent\test_langgraph_workflow.py", line 127, in test_workflow
+    async for event in app.astream(initial_state, config):
+    ...<60 lines>...
+                return True
+  File "C:\Users\Han\AppData\Local\Programs\Python\Python313\Lib\site-packages\langgraph\pregel\main.py", line 2999, in astream
+    raise GraphRecursionError(msg)
+langgraph.errors.GraphRecursionError: Recursion limit of 25 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.
+For troubleshooting, visit: https://docs.langchain.com/oss/python/langgraph/errors/GRAPH_RECURSION_LIMIT
+   [Phase 3] Design Refinement...
+   [OK] Refined and approved 0 screens
+
+   [ERROR] Workflow execution failed: Recursion limit of 25 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.
+For troubleshooting, visit: https://docs.langchain.com/oss/python/langgraph/errors/GRAPH_RECURSION_LIMIT
