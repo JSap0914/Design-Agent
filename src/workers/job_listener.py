@@ -173,15 +173,24 @@ async def start_listener() -> None:
 
     This is the main entry point for running the listener as a worker.
     """
-    # Setup signal handlers for graceful shutdown
-    loop = asyncio.get_running_loop()
+    # Setup signal handlers for graceful shutdown (Unix/Linux only)
+    import sys
 
-    def signal_handler(sig: signal.Signals) -> None:
-        logger.info("Received signal, initiating graceful shutdown", signal=sig.name)
-        job_listener.stop()
+    if sys.platform != 'win32':
+        # Unix/Linux signal handling
+        loop = asyncio.get_running_loop()
 
-    for sig in (signal.SIGTERM, signal.SIGINT):
-        loop.add_signal_handler(sig, lambda s=sig: signal_handler(s))
+        def signal_handler(sig: signal.Signals) -> None:
+            logger.info("Received signal, initiating graceful shutdown", signal=sig.name)
+            job_listener.stop()
+
+        for sig in (signal.SIGTERM, signal.SIGINT):
+            loop.add_signal_handler(sig, lambda s=sig: signal_handler(s))
+
+        logger.info("Signal handlers registered for graceful shutdown")
+    else:
+        # Windows: rely on KeyboardInterrupt handling (Ctrl+C)
+        logger.info("Running on Windows - use Ctrl+C for graceful shutdown")
 
     # Run listener
     await job_listener.run()

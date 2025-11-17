@@ -192,7 +192,7 @@ async def root():
 
 
 @app.post("/api/jobs/create")
-async def create_design_job(prd_content: str, trd_content: str, project_id: Optional[str] = None):
+async def create_design_job(prd_content: str, trd_content: str, project_id: str, user_id: str):
     """
     Create a new design job.
 
@@ -201,7 +201,8 @@ async def create_design_job(prd_content: str, trd_content: str, project_id: Opti
     Args:
         prd_content: Product Requirements Document content
         trd_content: Technical Requirements Document content
-        project_id: Optional ANYON project ID for integration
+        project_id: ANYON project ID for integration (required)
+        user_id: User ID creating the job (required)
 
     Returns:
         Job information including job_id and ticket_id
@@ -220,6 +221,8 @@ async def create_design_job(prd_content: str, trd_content: str, project_id: Opti
 
             new_job = DesignJob(
                 job_id=uuid.UUID(job_id),
+                project_id=project_id,
+                user_id=user_id,
                 status="pending",
                 prd_content=prd_content,
                 trd_content=trd_content,
@@ -232,7 +235,7 @@ async def create_design_job(prd_content: str, trd_content: str, project_id: Opti
 
         # Create ANYON ticket if integration enabled
         ticket_id = None
-        if settings.anyon_enable_integration and project_id:
+        if settings.anyon_enable_integration:
             try:
                 client = AnyonClient()
                 # Extract PRD title for ticket
